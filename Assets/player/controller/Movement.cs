@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     Transform _tr;
     bool canJump;
     public float movementSpeed;
+    public float maxSpeed;
     public float jumpHeight;
     public KeyCode up;
     public KeyCode down;
@@ -32,7 +33,6 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(jump) && canJump)
         {
             canJump = false;
-            Debug.Log("Jumped?");
             _rb.AddForce(jumpHeight * Vector3.up, ForceMode.VelocityChange);
         }
         /*
@@ -89,7 +89,8 @@ public class Movement : MonoBehaviour
         if (enteredIf)
         {
             facing.Normalize();
-            _rb.AddForce(facing * movementSpeed, ForceMode.VelocityChange);
+            if(_rb.velocity.magnitude < maxSpeed )
+                _rb.velocity = facing * movementSpeed + Vector3.up *_rb.velocity.y;
         }
         _tr.LookAt(_tr.position + facing);
     }
