@@ -5,7 +5,8 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     // Start is called before the first frame update
-    Vector3 facing;
+    private Vector3 facing;
+    private bool enteredIf;
     Rigidbody _rb;
     Transform _tr;
     bool canJump;
@@ -56,27 +57,41 @@ public class Movement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        enteredIf = false;
         if (Input.GetKey(up))
         {
-            _rb.AddForce(Vector3.forward * movementSpeed, ForceMode.VelocityChange);
-            _tr.LookAt(_tr.position + Vector3.forward);
+            //_rb.AddForce(Vector3.forward * movementSpeed, ForceMode.VelocityChange);
+            //_tr.LookAt(_tr.position + Vector3.forward;
+            facing = Vector3.forward;
+            enteredIf = true;
         } 
         else if (Input.GetKey(down))
-        {
-            _rb.AddForce(Vector3.back * movementSpeed, ForceMode.VelocityChange);
-            _tr.LookAt(_tr.position + Vector3.back);
+        {   
+            //_rb.AddForce(Vector3.back * movementSpeed, ForceMode.VelocityChange);
+            //_tr.LookAt(_tr.position + Vector3.back);
+            facing = Vector3.back;
+            enteredIf = true;
         }
         if (Input.GetKey(left))
         {
-            _rb.AddForce(Vector3.left * movementSpeed, ForceMode.VelocityChange);
-            _tr.LookAt(_tr.position + Vector3.left);
+            //_rb.AddForce(Vector3.left * movementSpeed, ForceMode.VelocityChange);
+            //_tr.LookAt(_tr.position + Vector3.left);
+            facing =(enteredIf)? facing + Vector3.left :Vector3.left;
+            enteredIf = true;
         }
         else if (Input.GetKey(right))
         {
-            _rb.AddForce(Vector3.right * movementSpeed, ForceMode.VelocityChange);
-            _tr.LookAt(_tr.position + Vector3.right);
+            //_rb.AddForce(Vector3.right * movementSpeed, ForceMode.VelocityChange);
+            //_tr.LookAt(_tr.position + Vector3.right);
+            facing = (enteredIf) ? facing + Vector3.right : Vector3.right;
+            enteredIf = true;
         }
-        
+        if (enteredIf)
+        {
+            facing.Normalize();
+            _rb.AddForce(facing * movementSpeed, ForceMode.VelocityChange);
+        }
+        _tr.LookAt(_tr.position + facing);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -85,6 +100,14 @@ public class Movement : MonoBehaviour
         {
             canJump = true;
         }
+    }
+
+    /**
+     * 
+     */
+    Vector3 GetFacing()
+    {
+        return facing;
     }
     void pistolMovement()
     {

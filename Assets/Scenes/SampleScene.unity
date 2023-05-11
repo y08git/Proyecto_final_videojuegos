@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 25268563}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,7 +189,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7eb33d681895a9c47b72fcd4f643bbb1, type: 2}
+  - {fileID: 2100000, guid: 543563dc76dc76b48ad54e7504e4fc94, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -228,7 +228,7 @@ Transform:
   m_GameObject: {fileID: 25268562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.6117, y: -1.5, z: -51.53737}
-  m_LocalScale: {x: 210.15753, y: 2.6681175, z: 285.727}
+  m_LocalScale: {x: 11.177741, y: 0.14191034, z: 15.197088}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -255,27 +255,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 427246, guid: 7aa6f6434be94e44583bd055d3a42eee, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 427246, guid: 7aa6f6434be94e44583bd055d3a42eee, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 427246, guid: 7aa6f6434be94e44583bd055d3a42eee, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 427246, guid: 7aa6f6434be94e44583bd055d3a42eee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.5431595
+      value: -9.9
       objectReference: {fileID: 0}
     - target: {fileID: 427246, guid: 7aa6f6434be94e44583bd055d3a42eee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.74
+      value: -0.43919
       objectReference: {fileID: 0}
     - target: {fileID: 427246, guid: 7aa6f6434be94e44583bd055d3a42eee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -36.46
+      value: -51.468
       objectReference: {fileID: 0}
     - target: {fileID: 427246, guid: 7aa6f6434be94e44583bd055d3a42eee, type: 3}
       propertyPath: m_LocalRotation.w
@@ -452,10 +452,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
+  jumpHeight: 4
   up: 119
   down: 115
   left: 97
   right: 100
+  jump: 32
+  shoot: 304
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +556,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280fa8f0abb82234780696cc02c3870c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limitUpperY: 200
-  limitLowerY: -200
-  positionRelativeToTarget: {x: 0, y: 20, z: 22}
+  limitUpperY: 20
+  limitLowerY: -20
+  positionRelativeToTarget: {x: 0, y: 3, z: -3}
