@@ -28,7 +28,7 @@ public class AnimationController : MonoBehaviour
     {
         if (anim != null && _rb != null)
         {
-            if ( _rb.velocity.y == 0 && (Input.GetKey(up) || Input.GetKey(down) || Input.GetKey(left) || Input.GetKey(right)))
+            if ( Mathf.Abs(_rb.velocity.y) < 0.1f && (Input.GetKey(up) || Input.GetKey(down) || Input.GetKey(left) || Input.GetKey(right)))
             {
                 anim.SetBool("isMoving", true);
             }

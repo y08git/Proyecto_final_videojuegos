@@ -7,12 +7,14 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     private Vector3 facing;
     private bool enteredIf;
+    private float currentSpeed;
     Rigidbody _rb;
     Transform _tr;
     bool canJump;
     public float airPenalty;
     public float movementSpeed;
     public float jumpHeight;
+    public float maxSpeed;
     public KeyCode up;
     public KeyCode down;
     public KeyCode left;
@@ -87,15 +89,19 @@ public class Movement : MonoBehaviour
             enteredIf = true;
         }
         _tr.LookAt(_tr.position + facing);
+        currentSpeed += (currentSpeed < maxSpeed) ? Time.fixedDeltaTime * movementSpeed : 0 ; //no utilizamos addforce por que salen cosas raras
         if (enteredIf)
         {
             facing.Normalize();
             if (canJump)
             {
-                _rb.velocity = facing * movementSpeed + Vector3.up * _rb.velocity.y;
+                _rb.velocity = facing * currentSpeed + Vector3.up * _rb.velocity.y;
             }else
             {
-                _rb.velocity += facing * movementSpeed * airPenalty * Time.fixedDeltaTime;
+                if (_rb.velocity.magnitude < maxSpeed)
+                {
+                    _rb.velocity += facing * movementSpeed * airPenalty * Time.fixedDeltaTime;
+                }
             }
         }
         
