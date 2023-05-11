@@ -10,6 +10,7 @@ public class AnimationController : MonoBehaviour
     private KeyCode down;
     private KeyCode left;
     private KeyCode right;
+    private bool inAir;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,7 @@ public class AnimationController : MonoBehaviour
     {
         if (anim != null && _rb != null)
         {
-            if (Input.GetKey(up) || Input.GetKey(down) || Input.GetKey(left) || Input.GetKey(right))
+            if ( _rb.velocity.y == 0 && (Input.GetKey(up) || Input.GetKey(down) || Input.GetKey(left) || Input.GetKey(right)))
             {
                 anim.SetBool("isMoving", true);
             }

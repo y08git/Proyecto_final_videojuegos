@@ -10,8 +10,8 @@ public class Movement : MonoBehaviour
     Rigidbody _rb;
     Transform _tr;
     bool canJump;
+    public float airPenalty;
     public float movementSpeed;
-    public float maxSpeed;
     public float jumpHeight;
     public KeyCode up;
     public KeyCode down;
@@ -86,13 +86,19 @@ public class Movement : MonoBehaviour
             facing = (enteredIf) ? facing + Vector3.right : Vector3.right;
             enteredIf = true;
         }
+        _tr.LookAt(_tr.position + facing);
         if (enteredIf)
         {
             facing.Normalize();
-            if(_rb.velocity.magnitude < maxSpeed )
-                _rb.velocity = facing * movementSpeed + Vector3.up *_rb.velocity.y;
+            if (canJump)
+            {
+                _rb.velocity = facing * movementSpeed + Vector3.up * _rb.velocity.y;
+            }else
+            {
+                _rb.velocity += facing * movementSpeed * airPenalty * Time.fixedDeltaTime;
+            }
         }
-        _tr.LookAt(_tr.position + facing);
+        
     }
 
     private void OnCollisionEnter(Collision collision)
