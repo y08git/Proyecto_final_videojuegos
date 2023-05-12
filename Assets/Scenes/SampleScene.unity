@@ -271,7 +271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 427246, guid: 7aa6f6434be94e44583bd055d3a42eee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.43919
+      value: -1.209
       objectReference: {fileID: 0}
     - target: {fileID: 427246, guid: 7aa6f6434be94e44583bd055d3a42eee, type: 3}
       propertyPath: m_LocalPosition.z
@@ -463,9 +463,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a8fe127a588f74aa595ed8576a0aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  airPenalty: 1
   movementSpeed: 5
-  maxSpeed: 6
   jumpHeight: 4
+  maxSpeed: 5
   up: 119
   down: 115
   left: 97
@@ -583,4 +584,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   limitUpperY: 20
   limitLowerY: -20
-  positionRelativeToTarget: {x: 0, y: 3, z: -3}
+  positionRelativeToTarget: {x: 0, y: 9, z: -10}

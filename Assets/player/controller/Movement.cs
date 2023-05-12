@@ -32,29 +32,15 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(_rb.velocity.y < -0.1f)
+        {
+            canJump = false;
+        }
         if (Input.GetKeyDown(jump) && canJump)
         {
             canJump = false;
             _rb.AddForce(jumpHeight * Vector3.up, ForceMode.VelocityChange);
         }
-        /*
-        if (Input.GetKeyDown(up))
-        {
-            _tr.LookAt(_tr.position + Vector3.forward);
-        }
-        if (Input.GetKeyDown(down))
-        {
-            _tr.LookAt(_tr.position + Vector3.back);
-        }
-        if (Input.GetKeyDown(left))
-        {
-            _tr.LookAt(_tr.position + Vector3.left);
-        }
-        if (Input.GetKeyDown(right))
-        {
-            _tr.LookAt(_tr.position + Vector3.right);
-        }*/
-
 
     }
     private void FixedUpdate()

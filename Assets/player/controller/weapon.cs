@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class weapon 
+public abstract class Weapon 
 {
+
     float launchDistance;
     float damage;
     float range;
     float angleFlyingDirection; //Ángula en la que vuela el personaje cuando se apunta abajo con un arma en grados.
     
-    public weapon(float launchDistance, float damage, float range, float angleflyingDirection)
+    public Weapon(float launchDistance, float damage, float range, float angleflyingDirection)
     {
         this.launchDistance = launchDistance;
         this.damage = damage;
