@@ -21,7 +21,7 @@ public class cameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (cam.position.y > limitLowerY && cam.position.y < limitUpperY) //revisa que la cámara este en rango de y, para que no se vaya muy arriba ni muy abajo
+        if (target.position.y > limitLowerY && target.position.y < limitUpperY) //revisa que la cámara este en rango de y, para que no se vaya muy arriba ni muy abajo
         {
             cam.position = target.position + positionRelativeToTarget;
         }

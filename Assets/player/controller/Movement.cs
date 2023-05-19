@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     private Vector3 facing;
     private bool enteredIf;
     private float currentSpeed;
+    private Weapon[] weapons;
     Rigidbody _rb;
     Transform _tr;
     bool canJump;
@@ -20,31 +21,28 @@ public class Movement : MonoBehaviour
     public KeyCode left;
     public KeyCode right;
     public KeyCode jump;
-    public KeyCode shoot;
+    public KeyCode shootJump;
     void Start()
     {
         canJump = true;
         _rb = GetComponent<Rigidbody>(); 
         _tr = GetComponent<Transform>(); 
         facing = new Vector3(1,0,0);
+        weapons = new Weapon[3];
+        weapons[0] = new Pistol(10.0f, 1.0f, 1.0f, 45.0f);
+        {
+        };
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(_rb.velocity.y < -0.1f)
-        {
-            canJump = false;
-        }
+        
         if (Input.GetKeyDown(jump) && canJump)
         {
             canJump = false;
             _rb.AddForce(jumpHeight * Vector3.up, ForceMode.VelocityChange);
         }
-
-    }
-    private void FixedUpdate()
-    {
         enteredIf = false;
         if (Input.GetKey(up))
         {
@@ -86,10 +84,16 @@ public class Movement : MonoBehaviour
             {
                 if (_rb.velocity.magnitude < maxSpeed)
                 {
-                    _rb.velocity += facing * movementSpeed * airPenalty * Time.fixedDeltaTime;
+                    _rb.velocity += facing * movementSpeed * airPenalty * Time.deltaTime;
                 }
             }
         }
+        if(Input.GetKeyDown(shootJump))
+        {
+            canJump = false;
+            _rb.velocity = weapons[0].getFlyingDirection(facing);
+        }
+
         
     }
 
@@ -101,15 +105,4 @@ public class Movement : MonoBehaviour
         }
     }
 
-    /**
-     * 
-     */
-    Vector3 GetFacing()
-    {
-        return facing;
-    }
-    void pistolMovement()
-    {
-        
-    }
 }

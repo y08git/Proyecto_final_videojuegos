@@ -15,7 +15,7 @@ public abstract class Weapon
         this.launchDistance = launchDistance;
         this.damage = damage;
         this.range = range;
-        this.angleFlyingDirection = Mathf.Sin(angleflyingDirection * Mathf.Deg2Rad);
+        this.angleFlyingDirection = Mathf.Cos(angleflyingDirection * Mathf.Deg2Rad);
     }
     
     public abstract void shoot();
@@ -24,13 +24,13 @@ public abstract class Weapon
      * @rotation rotación del vector z (la rotacción de donde apunta el personaje) en grados
      * 
      */
-    Vector3 getFlyingDirection(Vector3 facingDirection)
+    public Vector3 getFlyingDirection(Vector3 facingDirection)
     {
         Vector3 facing = new Vector3(facingDirection.x,0, facingDirection.z);
         facing.Normalize();
         facing *= Mathf.Abs(1.0f - angleFlyingDirection);
-        facing.z = angleFlyingDirection;
-        return facing;
+        facing.y = angleFlyingDirection;
+        return facing*launchDistance;
 
     }
     /**Cálcula la dirección del vector y la devuelve respecto a la rotación de la axis y 
