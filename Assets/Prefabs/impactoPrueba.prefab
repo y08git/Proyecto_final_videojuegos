@@ -69,11 +69,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7841807311904250760, guid: f67875cbeab561e44abf1e19d1e5a8ad, type: 3}
       propertyPath: duracion
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7841807311904250760, guid: f67875cbeab561e44abf1e19d1e5a8ad, type: 3}
       propertyPath: tipoImpacto
-      value: Enviroment
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f67875cbeab561e44abf1e19d1e5a8ad, type: 3}
