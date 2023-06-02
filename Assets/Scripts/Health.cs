@@ -8,22 +8,27 @@ public class Health : MonoBehaviour
 
     private float f_health;
 
-    private float maxHealth;
-    private float minHealth;
+    private float maxValHealthBar;
+    private float minValHealthBar;
+
+    Transform _tr; 
 
     void Start(){
         f_health = (float) this.health;
+        _tr = GameObject.Find("Canvas/HealthBar").transform;
+        maxValHealthBar = _tr.position.x;
+        minValHealthBar = maxValHealthBar - 230;
     }
 
     void Update(){
         if(f_health <= 0){
-            this.gameObject.GetComponent<Death>().Die();
+            Destroy(this.gameObject);
         }
     }
 
     public void takeDamage(int damage){
         f_health -= damage;
-        Debug.Log(f_health);
+        _tr.position = new Vector3(minValHealthBar + (((maxValHealthBar - minValHealthBar) / health) * f_health), _tr.position.y, _tr.position.z);
     }
 
     public float getHealth(){
@@ -32,5 +37,13 @@ public class Health : MonoBehaviour
 
     public void takeDamageOverTime(int damage){
         f_health -= damage*Time.deltaTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "trampa")
+        {
+            takeDamage(3);
+        }
     }
 }
