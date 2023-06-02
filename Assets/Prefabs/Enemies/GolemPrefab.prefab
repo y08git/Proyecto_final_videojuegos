@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8753619234690991415}
   - component: {fileID: 5537810173121162661}
   - component: {fileID: 716701126555664937}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GolemPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,11 +49,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dangerZone: {fileID: 8890205658473922718}
   _objetivo: {fileID: 0}
-  maxSpeed: 5
+  maxSpeed: 8
   turnSpeed: 0.75
   duration: 1
   atack_duration: 2
-  damage: 10
+  damage: 3
 --- !u!54 &716701126555664937
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -164,6 +164,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golem
       objectReference: {fileID: 0}
+    - target: {fileID: 100038, guid: d19f0e375a0203a4ca72964404dbd39e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d19f0e375a0203a4ca72964404dbd39e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -194,15 +198,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400038, guid: d19f0e375a0203a4ca72964404dbd39e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400038, guid: d19f0e375a0203a4ca72964404dbd39e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400038, guid: d19f0e375a0203a4ca72964404dbd39e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400038, guid: d19f0e375a0203a4ca72964404dbd39e, type: 3}
       propertyPath: m_LocalPosition.x

@@ -65,11 +65,11 @@ PrefabInstance:
       objectReference: {fileID: 3392771190857399019, guid: 5427b20363500284f82017c06dbf802a, type: 3}
     - target: {fileID: 5662496883845975243, guid: 9cab8959085b6d041a1fe28494b61c01, type: 3}
       propertyPath: duracion
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5662496883845975243, guid: 9cab8959085b6d041a1fe28494b61c01, type: 3}
       propertyPath: velocidad
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5662496883845975243, guid: 9cab8959085b6d041a1fe28494b61c01, type: 3}
       propertyPath: tipoImpacto.m_Bits
