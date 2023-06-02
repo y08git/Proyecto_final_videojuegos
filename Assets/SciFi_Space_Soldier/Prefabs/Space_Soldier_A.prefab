@@ -296,6 +296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 420174}
   - component: {fileID: 13792380}
+  - component: {fileID: 7751621972986203106}
   m_Layer: 0
   m_Name: Weapon_Rifle_1
   m_TagString: Untagged
@@ -372,6 +373,24 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000000026077032, y: -0.21533816, z: 0.011439174}
     m_Extent: {x: 0.051317237, y: 0.5094786, z: 0.17244191}
   m_DirtyAABB: 0
+--- !u!114 &7751621972986203106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 641075f0efee1bc45a5d6ddc6f209a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner_municion: {fileID: 8379081877882457444, guid: 119571e7a4dc2b145b406f7d0e8cb7ed, type: 3}
+  municion: {fileID: 3777079101977746060, guid: d4ddef30dc2165440b79e8771d7fe9c2, type: 3}
+  poder_disparo: 2
+  cadencia: 1
+  magnitud_fuerza_empuje: 2
+  ready_fire: 1
 --- !u!1 &189644
 GameObject:
   m_ObjectHideFlags: 0
