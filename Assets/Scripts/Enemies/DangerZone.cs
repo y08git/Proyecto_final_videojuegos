@@ -26,7 +26,6 @@ public class DangerZone : MonoBehaviour
     void OnTriggerEnter(Collider collision){
         if(tarjetOnRange)
             return;
-        Debug.Log("Hooola");
         if(collision.gameObject.layer == LayerMask.NameToLayer(layer_name))
             this.tarjetOnRange = true;
             this.tarjet = collision.gameObject;
