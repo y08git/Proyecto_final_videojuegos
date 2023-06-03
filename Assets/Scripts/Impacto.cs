@@ -14,17 +14,19 @@ public class Impacto : MonoBehaviour
     void Start(){
         StartCoroutine(DestroyImpacto());
     }
-    void OnCollisionEnter(Collision collision){
-        var _layerMask = collision.gameObject.layer;
-        if(LayerMask.NameToLayer(tipoImpacto) == _layerMask){
-            collision.gameObject.GetComponent<Health>().takeDamage(1);
-        }
-    }
+    // void OnCollisionEnter(Collision collision){
+    //     var _layerMask = collision.gameObject.layer;
+    //     if(LayerMask.NameToLayer(tipoImpacto) == _layerMask){
+    //         collision.gameObject.GetComponent<Vida>().takeDamage(1);
+    //     }
+    // }
 
     void OnTriggerEnter(Collider collision){
         var _layerMask = collision.gameObject.layer;
+        Animator animator = collision.gameObject.GetComponent<Animator>();
         if(LayerMask.NameToLayer(tipoImpacto) == _layerMask){
-            collision.gameObject.GetComponent<Health>().takeDamage(1);
+            animator = collision.gameObject.GetComponent<MeeleEnemy>().getAnimator();
+            collision.gameObject.GetComponent<Vida>().takeDamage(1);
         }
     }
 

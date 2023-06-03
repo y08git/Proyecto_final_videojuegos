@@ -16,6 +16,8 @@ public class MeeleEnemy : MonoBehaviour
 
     public Transform _objetivo;
 
+    private Vida _vida;
+
     // private Transform _objetivo;
 
     public float maxSpeed = 5f;
@@ -28,8 +30,10 @@ public class MeeleEnemy : MonoBehaviour
     private int damage;
 
     private bool toco = false;
-    private bool moving = false;
     private bool atacking = false;
+
+    private bool dead = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,12 +41,17 @@ public class MeeleEnemy : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _animator = transform.GetChild(1).GetComponent<Animator>();
         _dangerZone = dangerZone.GetComponent<DangerZone>();
+        _vida = GetComponent<Vida>();
+        _vida.setAnimator(_animator);
     }
 
     void Update()
     {   
+        if(!dead){
+        if(_vida.died){
+            StartCoroutine(Die());
+        }else{
         var distance_from_objetivo = DistanceFrom(_objetivo);
-        Debug.Log(distance_from_objetivo);
         var is_onRange = distance_from_objetivo <= _dangerZone.getRadius()*0.8f;
         var not_onRange = distance_from_objetivo > _dangerZone.getRadius()*1.1f;
         if(not_onRange){
@@ -53,20 +62,28 @@ public class MeeleEnemy : MonoBehaviour
             toco = true;
         if(toco & !atacking)
             StartCoroutine(Atack());
-        if(!moving){
-            StartCoroutine(MoveForwardTo(_objetivo));
+        if(!toco)
+            MoveForwardTo(_objetivo);
+        else
+            StareAt(_objetivo);
         }
+        }
+    }
+
+    IEnumerator Die(){
+        dead = true;
+        _animator.SetFloat("Walk",0f);
+        _animator.SetBool("Die",true);
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 
     IEnumerator Atack(){
         atacking = true;
         var _health = _dangerZone.getTarjet().GetComponent<Health>();
-        while(toco){
-            _animator.SetBool("Hit",true);
-            yield return new WaitForSeconds(atack_duration);
-            _health.takeDamage(damage);
-            yield return 0;
-        }
+        _animator.SetBool("Hit",true);
+        _health.takeDamage(damage);
+        yield return new WaitForSeconds(atack_duration);
         atacking = false;
         _animator.SetBool("Hit",false);
     }
@@ -76,18 +93,16 @@ public class MeeleEnemy : MonoBehaviour
             toco = true;
     }
 
-    IEnumerator MoveForwardTo(Transform objetivo){
-        moving = true;
-        while(!toco){
+    void MoveForwardTo(Transform objetivo){
         direction = LookAt(objetivo);
         _rigidbody.MoveRotation(Quaternion.Slerp(transform.rotation,LookAt(objetivo),turnSpeed));
         _rigidbody.MovePosition(transform.position + transform.forward*maxSpeed*Time.deltaTime);
         _animator.SetFloat("Walk",1f);
-        yield return 0;
-        }
-        _rigidbody.MoveRotation(Quaternion.Slerp(transform.rotation,LookAt(objetivo),turnSpeed));
+    }
+
+    void StareAt(Transform objetivo){
         _animator.SetFloat("Walk",0f);
-        moving = false;
+        _rigidbody.MoveRotation(Quaternion.Slerp(transform.rotation,LookAt(objetivo),turnSpeed));
     }
 
     Quaternion LookAt(Transform objetivo){
@@ -111,5 +126,9 @@ public class MeeleEnemy : MonoBehaviour
         }
 
         return null;
+    }
+
+    public Animator getAnimator(){
+        return _animator;
     }
 }

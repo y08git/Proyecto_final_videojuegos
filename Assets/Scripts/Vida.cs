@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Vida : MonoBehaviour
 {
     public int health;
 
@@ -13,13 +13,14 @@ public class Health : MonoBehaviour
 
     public bool died = false;
 
+    private bool takingDamage = false;
+
+    private Animator _animator;
+
     Transform _tr; 
 
     void Start(){
         f_health = (float) this.health;
-        _tr = GameObject.Find("Canvas/HealthBar").transform;
-        maxValHealthBar = _tr.position.x;
-        minValHealthBar = maxValHealthBar - 230;
     }
 
     void Update(){
@@ -30,7 +31,15 @@ public class Health : MonoBehaviour
 
     public void takeDamage(int damage){
         f_health -= damage;
-        _tr.position = new Vector3(minValHealthBar + (((maxValHealthBar - minValHealthBar) / health) * f_health), _tr.position.y, _tr.position.z);
+        StartCoroutine(DisplayAnimation());
+    }
+
+    private IEnumerator DisplayAnimation(){
+        takingDamage = true;
+        _animator.SetBool("Damage",true);
+        yield return new WaitForSeconds(0.5f);
+        _animator.SetBool("Damage",false);
+        takingDamage = false;
     }
 
     public float getHealth(){
@@ -41,11 +50,7 @@ public class Health : MonoBehaviour
         f_health -= damage*Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "trampa")
-        {
-            takeDamage(3);
-        }
+    public void setAnimator(Animator animator){
+        this._animator = animator;
     }
 }

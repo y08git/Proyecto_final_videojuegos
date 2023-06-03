@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8753619234690991415}
   - component: {fileID: 5537810173121162661}
   - component: {fileID: 716701126555664937}
+  - component: {fileID: 7685290216687745257}
+  - component: {fileID: 979210269319560435}
   m_Layer: 6
   m_Name: GolemPrefab
   m_TagString: Untagged
@@ -70,6 +72,33 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &7685290216687745257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8753619234690991416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59184251e90df5842997530af3d63ebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  died: 0
+--- !u!135 &979210269319560435
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8753619234690991416}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.9948441
+  m_Center: {x: 0, y: 1.9848439, z: 0}
 --- !u!1001 &5509112318563059510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -263,21 +292,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400038, guid: d19f0e375a0203a4ca72964404dbd39e, type: 3}
   m_PrefabInstance: {fileID: 8753619234851802246}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8753619234851899968 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100038, guid: d19f0e375a0203a4ca72964404dbd39e, type: 3}
-  m_PrefabInstance: {fileID: 8753619234851802246}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &6464614735045049383
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8753619234851899968}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.49, z: 0}
