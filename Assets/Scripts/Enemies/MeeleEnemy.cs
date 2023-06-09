@@ -52,8 +52,8 @@ public class MeeleEnemy : MonoBehaviour
             StartCoroutine(Die());
         }else{
         var distance_from_objetivo = DistanceFrom(_objetivo);
-        var is_onRange = distance_from_objetivo <= _dangerZone.getRadius()*0.8f;
-        var not_onRange = distance_from_objetivo > _dangerZone.getRadius()*1.1f;
+        var is_onRange = distance_from_objetivo <= _dangerZone.getRadius()*1f;
+        var not_onRange = distance_from_objetivo > _dangerZone.getRadius()*0.8f;
         if(not_onRange){
             toco = false;
             _dangerZone.setTarjetOnRange(false);
@@ -80,9 +80,10 @@ public class MeeleEnemy : MonoBehaviour
 
     IEnumerator Atack(){
         atacking = true;
-        var _health = _dangerZone.getTarjet().GetComponent<Health>();
+        Health _health = _dangerZone.getTarjet().GetComponent<Health>();
         _animator.SetBool("Hit",true);
-        _health.takeDamage(damage);
+       if(_health != null) 
+            _health.takeDamage(damage);
         yield return new WaitForSeconds(atack_duration);
         atacking = false;
         _animator.SetBool("Hit",false);

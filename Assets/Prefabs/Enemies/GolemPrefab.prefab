@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 716701126555664937}
   - component: {fileID: 7685290216687745257}
   - component: {fileID: 979210269319560435}
+  - component: {fileID: 4929705895717421693}
   m_Layer: 6
   m_Name: GolemPrefab
   m_TagString: Untagged
@@ -51,11 +52,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dangerZone: {fileID: 8890205658473922718}
   _objetivo: {fileID: 0}
-  maxSpeed: 8
+  maxSpeed: 10
   turnSpeed: 0.75
   duration: 1
   atack_duration: 2
-  damage: 3
+  damage: 2
 --- !u!54 &716701126555664937
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -95,10 +96,23 @@ SphereCollider:
   m_GameObject: {fileID: 8753619234690991416}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 1.9948441
   m_Center: {x: 0, y: 1.9848439, z: 0}
+--- !u!65 &4929705895717421693
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8753619234690991416}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.4626195, y: 4.2062225, z: 1.9971507}
+  m_Center: {x: -0.008376479, y: 2.0940166, z: -0.69800544}
 --- !u!1001 &5509112318563059510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,7 +178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8827257746005121122, guid: 25da681112fc60a4f81c17b038e2d03b, type: 3}
       propertyPath: radius
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8827257746005121122, guid: 25da681112fc60a4f81c17b038e2d03b, type: 3}
       propertyPath: layer_name

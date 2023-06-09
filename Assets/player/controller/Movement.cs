@@ -100,13 +100,20 @@ public class Movement : MonoBehaviour
             facing.Normalize();
             if (canJump)
             {
-                _rb.velocity = facing * currentSpeed + Vector3.up * _rb.velocity.y;
+                _rb.velocity = facing * currentSpeed  + Vector3.up * _rb.velocity.y;
             }else
             {
                 if (_rb.velocity.magnitude < maxSpeed)
                 {
                     _rb.velocity += facing * movementSpeed * airPenalty * Time.deltaTime;
                 }
+            }
+        }
+        else
+        {
+            if (canJump)
+            {
+                _rb.velocity = Vector3.zero;
             }
         }
         if(Input.GetKeyDown(shootJump) && (currentAirMunition > 0) && wp.ready_fire)
