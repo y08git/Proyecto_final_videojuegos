@@ -33,11 +33,13 @@ public class Movement : MonoBehaviour
     private float minValHealthBar;
     public TMP_Text tmp;
     Weapon wp;
+    // [SerializeField]
+    // AudioSource _audioSource_walk;
     void Start()
     {
         canJump = true;
         _rb = GetComponent<Rigidbody>(); 
-        _tr = GetComponent<Transform>(); 
+        _tr = GetComponent<Transform>();
         facing = new Vector3(1,0,0);
         weapons = new Weapon1[3];
         weapons[0] = new Pistol(10.0f, 1.0f, 1.0f, 45.0f);

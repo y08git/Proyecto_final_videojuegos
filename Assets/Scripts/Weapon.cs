@@ -15,6 +15,9 @@ public class Weapon : MonoBehaviour
 
     [SerializeField]
     float cadencia = 1;
+
+    [SerializeField]
+    AudioSource _audioSource_shoot;
     
     float duracion_recarga;
 
@@ -24,6 +27,7 @@ public class Weapon : MonoBehaviour
 
     public IEnumerator Disparo(){
         ready_fire = false;
+        _audioSource_shoot.Play();
         float elapsedTime = 0;
         while (elapsedTime < cadencia){
             elapsedTime += Time.deltaTime;
