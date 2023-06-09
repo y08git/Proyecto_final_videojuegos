@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9090722328084719254}
   - component: {fileID: 9090722328096513512}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SK_Soldier_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9090722328084650824}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9090722328084656916}
   - component: {fileID: 9090722328096316182}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SK_Soldier_Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9090722328084674828}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WeaponGrip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 9090722328084666798}
   - component: {fileID: 9090722328092146400}
   - component: {fileID: 9090722326935659214}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Weapon_Rifle_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -570,7 +570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9090722328084706518}
   - component: {fileID: 9090722326964468843}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Weapon_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -615,7 +615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9090722328084715748}
   - component: {fileID: 9090722328096315254}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SK_Soldier_Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -702,7 +702,7 @@ GameObject:
   - component: {fileID: 9090722328096520256}
   - component: {fileID: 1566110104766466014}
   - component: {fileID: 9090722326927400229}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Weapon_Rifle_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -948,6 +948,10 @@ PrefabInstance:
     - target: {fileID: 8379081877882457444, guid: 119571e7a4dc2b145b406f7d0e8cb7ed, type: 3}
       propertyPath: m_Name
       value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379081877882457444, guid: 119571e7a4dc2b145b406f7d0e8cb7ed, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 119571e7a4dc2b145b406f7d0e8cb7ed, type: 3}
