@@ -22,7 +22,13 @@ public class EnemySpawner : MonoBehaviour
     public GameObject dangerZone;
     private DangerZone _dangerZone;
 
+    private List<MeeleEnemy> instances;
+
+    private int dead_instances;
+
     void Start(){
+        dead_instances = 0;
+        instances = new List<MeeleEnemy>();
         _dangerZone = dangerZone.GetComponent<DangerZone>();
         _meele_enemy = meele_enemy.GetComponent<MeeleEnemy>();
     }
@@ -30,20 +36,42 @@ public class EnemySpawner : MonoBehaviour
     void Update(){
         if(_dangerZone.getTarjetOnRange() & !spawning){
             _meele_enemy._objetivo = _dangerZone.getTarjet().transform;
-            Spawn();
+            StartCoroutine(SpawnEnemy());
         }
         if(spawned)
-            Destroy(gameObject);
+            GetComponent<MeshRenderer>().enabled = false;
+            spawned = false;
+        CheckDeads();
     }
 
-    public void Spawn(){
-        StartCoroutine(SpawnEnemy());
+    private void CheckDeads(){
+        var removal = new List<int>();
+        for (int i = 0; i < instances.Count; i++)
+        {
+            if(instances[i].isDead()){
+                dead_instances += 1;
+                removal.Add(i);
+            }
+        }
+        foreach (int index in removal)
+        {
+            instances.RemoveAt(index);
+        }
+    }
+
+    public int GetDeads(){
+        return dead_instances;
+    }
+
+    public int GetnEnemies(){
+        return n_enemies;
     }
 
     IEnumerator SpawnEnemy(){
         spawning = true;
         for(int i=0; i<n_enemies;i++){
-            Instantiate(meele_enemy,transform.position,meele_enemy.transform.rotation);
+            GameObject instance = Instantiate(meele_enemy,transform.position,meele_enemy.transform.rotation);
+            instances.Add(instance.GetComponent<MeeleEnemy>());
             yield return new WaitForSeconds(rate_spawn);
         }
         spawned = true;

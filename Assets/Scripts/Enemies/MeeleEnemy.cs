@@ -70,6 +70,10 @@ public class MeeleEnemy : MonoBehaviour
         }
     }
 
+    public bool isDead(){
+        return dead;
+    }
+
     IEnumerator Die(){
         dead = true;
         _animator.SetFloat("Walk",0f);
