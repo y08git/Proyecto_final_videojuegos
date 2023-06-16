@@ -56,7 +56,9 @@ public class Ammo : MonoBehaviour
     void OnTriggerEnter(Collider collision){
         if(collision.gameObject.layer == LayerMask.NameToLayer("Weapon"))
             return;
-        if(!pego){
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Spawner"))
+            return;
+        if (!pego){
             pego = true;
             spawner_impacto.GetComponent<Spawner>().spawn(impacto, impacto.transform.rotation);
             Destroy(this.gameObject);

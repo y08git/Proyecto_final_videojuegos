@@ -46,7 +46,7 @@ public class Movement : MonoBehaviour
         weapons[0] = new Pistol(10.0f, 1.0f, 1.0f, 45.0f);
         currentAirMunition = airMunition;
         recharging = false;
-        wp = this.gameObject.GetComponent<Player>().GetWeapon();
+        wp = GetComponent<Player>().GetWeapon();
         _trCanvas = GameObject.Find("Canvas/PlayerUI/Recharge").GetComponent<RectTransform>();
         maxValHealthBar = _trCanvas.position.x;
         minValHealthBar -= 100;
@@ -123,7 +123,7 @@ public class Movement : MonoBehaviour
         {
             wp.Disparo();
             currentAirMunition--;
-            tmp.text = "" + currentAirMunition;
+            tmp.text = currentAirMunition.ToString();
             canJump = false;
             _rb.velocity = weapons[0].getFlyingDirection(facing);
         }
@@ -169,6 +169,11 @@ public class Movement : MonoBehaviour
 
     public void SetStopMoving(bool state){
         stopMoving = state;
+    }
+
+    public bool stoppedMove()
+    {
+        return stopMoving;
     }
 
 }
