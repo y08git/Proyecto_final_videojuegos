@@ -16,8 +16,12 @@ public class Player : MonoBehaviour
     // 1: lanzallamas
     // 2: lanzacohetes
     private int armaIndex;
-    void Start(){
+
+    private void Awake()
+    {
         arma = pistola;
+    }
+    void Start(){
         mv = GetComponent<Movement>();
         //armaIndex = 0;
     }

@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dangerZone: {fileID: 8890205658473922718}
   _objetivo: {fileID: 0}
-  maxSpeed: 10
+  maxSpeed: 15
   turnSpeed: 0.75
   duration: 1
   atack_duration: 2

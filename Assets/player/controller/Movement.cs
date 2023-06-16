@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     public float movementSpeed;
     public float jumpHeight;
     public float maxSpeed;  
+    public bool hasSpecialJump;
     public LayerMask layermask;
     public KeyCode up;
     public KeyCode down;
@@ -124,7 +125,7 @@ public class Movement : MonoBehaviour
                 currentSpeed = 0;
             }
         }
-        if(Input.GetKeyDown(shootJump) && (currentAirMunition > 0) && wp.ready_fire)
+        if(hasSpecialJump && (Input.GetKeyDown(shootJump) && (currentAirMunition > 0) && wp.ready_fire))
         {
             wp.Disparo();
             currentAirMunition--;
