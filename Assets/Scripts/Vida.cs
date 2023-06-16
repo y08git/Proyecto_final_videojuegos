@@ -13,8 +13,6 @@ public class Vida : MonoBehaviour
 
     public bool died = false;
 
-    private bool takingDamage = false;
-
     private Animator _animator;
 
     Transform _tr; 
@@ -35,11 +33,9 @@ public class Vida : MonoBehaviour
     }
 
     private IEnumerator DisplayAnimation(){
-        takingDamage = true;
         _animator.SetBool("Damage",true);
         yield return new WaitForSeconds(0.5f);
         _animator.SetBool("Damage",false);
-        takingDamage = false;
     }
 
     public float getHealth(){
