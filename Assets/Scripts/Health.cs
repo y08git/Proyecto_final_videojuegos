@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
 
     void Start(){
         f_health = (float) this.health;
-        _tr = GameObject.Find("Canvas/HealthBar").transform;
+        _tr = GameObject.Find("Canvas/PlayerUI/HealthBar").transform;
         maxValHealthBar = _tr.position.x;
         minValHealthBar = maxValHealthBar - 230;
     }

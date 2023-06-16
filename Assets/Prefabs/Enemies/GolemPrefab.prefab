@@ -178,11 +178,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8827257746005121122, guid: 25da681112fc60a4f81c17b038e2d03b, type: 3}
       propertyPath: radius
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8827257746005121122, guid: 25da681112fc60a4f81c17b038e2d03b, type: 3}
       propertyPath: layer_name
-      value: Weapon
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25da681112fc60a4f81c17b038e2d03b, type: 3}
