@@ -33,6 +33,7 @@ public class Movement : MonoBehaviour
     private float minValHealthBar;
     public TMP_Text tmp;
     Weapon wp;
+    private bool stopMoving = false;
     // [SerializeField]
     // AudioSource _audioSource_walk;
     void Start()
@@ -46,7 +47,7 @@ public class Movement : MonoBehaviour
         currentAirMunition = airMunition;
         recharging = false;
         wp = this.gameObject.GetComponent<Player>().GetWeapon();
-        _trCanvas = GameObject.Find("Canvas/Recharge").GetComponent<RectTransform>();
+        _trCanvas = GameObject.Find("Canvas/PlayerUI/Recharge").GetComponent<RectTransform>();
         maxValHealthBar = _trCanvas.position.x;
         minValHealthBar -= 100;
     }
@@ -54,6 +55,8 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(stopMoving)
+            return;
         if(!recharging && (currentAirMunition < airMunition))
         {
             recharging = true;
@@ -162,6 +165,10 @@ public class Movement : MonoBehaviour
     public Vector3 GetFacing()
     {
         return facing;
+    }
+
+    public void SetStopMoving(bool state){
+        stopMoving = state;
     }
 
 }
