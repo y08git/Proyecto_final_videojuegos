@@ -21,7 +21,16 @@ public class Player : MonoBehaviour
     {
         arma = pistola;
     }
+    public float velocidad_movimiento;
+    public int direccion;
+    Rigidbody _rigidBody;
+
+    [SerializeField]
+    AudioSource _maintheme;
+
     void Start(){
+        _maintheme.Play();
+        _rigidBody = GetComponent<Rigidbody>();
         mv = GetComponent<Movement>();
         //armaIndex = 0;
     }
