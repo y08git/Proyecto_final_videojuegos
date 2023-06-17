@@ -19,11 +19,13 @@ public class Player : MonoBehaviour
 
     public float velocidad_movimiento;
     public int direccion;
-
-
     Rigidbody _rigidBody;
 
+    [SerializeField]
+    AudioSource _maintheme;
+
     void Start(){
+        _maintheme.Play();
         _rigidBody = GetComponent<Rigidbody>();
         arma = pistola;
         mv = GetComponent<Movement>();
