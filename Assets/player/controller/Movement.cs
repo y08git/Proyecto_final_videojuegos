@@ -121,7 +121,8 @@ public class Movement : MonoBehaviour
         {
             if (canJump)
             {
-                _rb.velocity = Vector3.zero;
+                _rb.velocity = Vector3.up * _rb.velocity.y;
+                //canJump = _rb.velocity.y < -1.2f; 
                 currentSpeed = 0;
             }
         }
