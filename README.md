@@ -5,4 +5,5 @@ Integrantes:
 Juan Yair Chiu Valderrama 
 <br>
 Marco Antonio Cruz Maya
+<br>
 Gala Mercedes Corona Peña
