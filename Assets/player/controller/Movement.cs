@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     public float movementSpeed;
     public float jumpHeight;
     public float maxSpeed;  
+    public bool hasSpecialJump;
     public LayerMask layermask;
     public KeyCode up;
     public KeyCode down;
@@ -46,7 +47,7 @@ public class Movement : MonoBehaviour
         weapons[0] = new Pistol(10.0f, 1.0f, 1.0f, 45.0f);
         currentAirMunition = airMunition;
         recharging = false;
-        wp = this.gameObject.GetComponent<Player>().GetWeapon();
+        wp = GetComponent<Player>().GetWeapon();
         _trCanvas = GameObject.Find("Canvas/PlayerUI/Recharge").GetComponent<RectTransform>();
         maxValHealthBar = _trCanvas.position.x;
         minValHealthBar -= 100;
@@ -103,12 +104,16 @@ public class Movement : MonoBehaviour
             facing.Normalize();
             if (canJump)
             {
-                _rb.velocity = facing * currentSpeed  + Vector3.up * _rb.velocity.y;
+                _rb.velocity = facing * currentSpeed  + Vector3.up * _rb.velocity.y ;
             }else
             {
                 if (_rb.velocity.magnitude < maxSpeed)
                 {
                     _rb.velocity += facing * movementSpeed * airPenalty * Time.deltaTime;
+                }
+                else
+                {
+                    _rb.velocity = (_rb.velocity + (facing * airPenalty * Time.deltaTime)).normalized * _rb.velocity.magnitude;
                 }
             }
         }
@@ -117,13 +122,14 @@ public class Movement : MonoBehaviour
             if (canJump)
             {
                 _rb.velocity = Vector3.zero;
+                currentSpeed = 0;
             }
         }
-        if(Input.GetKeyDown(shootJump) && (currentAirMunition > 0) && wp.ready_fire)
+        if(hasSpecialJump && (Input.GetKeyDown(shootJump) && (currentAirMunition > 0) && wp.ready_fire))
         {
             wp.Disparo();
             currentAirMunition--;
-            tmp.text = "" + currentAirMunition;
+            tmp.text = currentAirMunition.ToString();
             canJump = false;
             _rb.velocity = weapons[0].getFlyingDirection(facing);
         }
@@ -169,6 +175,11 @@ public class Movement : MonoBehaviour
 
     public void SetStopMoving(bool state){
         stopMoving = state;
+    }
+
+    public bool stoppedMove()
+    {
+        return stopMoving;
     }
 
 }

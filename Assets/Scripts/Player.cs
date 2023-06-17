@@ -17,15 +17,11 @@ public class Player : MonoBehaviour
     // 2: lanzacohetes
     private int armaIndex;
 
-    public float velocidad_movimiento;
-    public int direccion;
-
-
-    Rigidbody _rigidBody;
-
-    void Start(){
-        _rigidBody = GetComponent<Rigidbody>();
+    private void Awake()
+    {
         arma = pistola;
+    }
+    void Start(){
         mv = GetComponent<Movement>();
         //armaIndex = 0;
     }
@@ -42,10 +38,9 @@ public class Player : MonoBehaviour
             transform.Translate((mv.GetFacing()) * Time.deltaTime * arma.GetComponent<Weapon>().magnitud_fuerza_empuje);
         }
     }
-     
+
     public Weapon GetWeapon()
     {
         return arma.GetComponent<Weapon>();
     }
-    void moverse(){}
 }
