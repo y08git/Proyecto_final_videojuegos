@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2560850697569470034}
   - component: {fileID: 2560850697569470029}
   - component: {fileID: 2560850697569470028}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,6 +169,10 @@ PrefabInstance:
     - target: {fileID: 3968821939525355432, guid: 25da681112fc60a4f81c17b038e2d03b, type: 3}
       propertyPath: m_Name
       value: DangerZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968821939525355432, guid: 25da681112fc60a4f81c17b038e2d03b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8827257746005121122, guid: 25da681112fc60a4f81c17b038e2d03b, type: 3}
       propertyPath: radius

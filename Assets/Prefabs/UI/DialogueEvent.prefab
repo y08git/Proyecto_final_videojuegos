@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4927085215018030381}
   - component: {fileID: 2833397088988507435}
   - component: {fileID: 3766929010348702114}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DialogueEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
