@@ -3,6 +3,6 @@ Proyecto final de videojuegos
 Integrantes: 
 <br>
 Juan Yair Chiu Valderrama 
-Marco Antonio Cruz
-Gala
-<\br>
+<br>
+Marco Antonio Cruz Maya
+Gala Mercedes Corona Peña
